@@ -1,0 +1,7 @@
+ARG_ENABLE('pathfinding', 'Enable pathfinding support', 'no');
+
+if (PHP_PATHFINDING != 'no') {
+	AC_DEFINE('HAVE_PATHFINDING', 1, 'pathfinding support enabled');
+	EXTENSION('pathfinding', 'pathfinding.c', PHP_PATHFINDING_SHARED, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 /I' + configure_module_dirname + ' /I' + configure_module_dirname + '/3D-AStar-ThetaStar');
+	ADD_FLAG("CFLAGS_PATHFINDING", "/EHsc");
+}
